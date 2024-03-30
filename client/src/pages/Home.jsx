@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useSnapshot } from "valtio";
 
 import state from "../store";
+import { CustomButton } from "../components";
 import {
   headContentAnimation,
   headContainerAnimation,
@@ -14,7 +15,7 @@ export default function Home() {
   return (
     <AnimatePresence>
       {snap.intro && (
-        <motion.section className="home" {...slideAnimation("left")}>
+        <motion.section className=" px-6" {...slideAnimation("left")}>
           <motion.header {...slideAnimation("down")}>
             <img
               src="./threejs.png"
@@ -24,16 +25,25 @@ export default function Home() {
           </motion.header>
           <motion.div className="home-content" {...headContainerAnimation}>
             <motion.div {...headTextAnimation}>
-              <h1 className=" text-5xl font-extrabold text-center">
+              <h1 className=" text-5xl font-extrabold mb-5">
                 LET&apos;S <br className="xl:block hidden" /> DO IT.
               </h1>
             </motion.div>
-            <motion.div>
-              <p>
+            <motion.div
+              {...headContentAnimation}
+              className="flex flex-col gap-5"
+            >
+              <p className="max-w-md font-normal text-gray-600 text-base">
                 Create your unique and exclusive shirt with our brand-new
-                customization tool.<strong>unleash your imagination.</strong>{" "}
+                customization tool. <strong>Unleash your imagination.</strong>{" "}
                 and define your own style.
               </p>
+              <CustomButton
+                type="filled"
+                title="Customize It"
+                handleClick={() => (state.intro = false)}
+                CustomStyles="w-fit px-4 py-2.5 font-bold text-sm"
+              />
             </motion.div>
           </motion.div>
         </motion.section>
