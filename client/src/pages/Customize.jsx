@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { useSnapshot } from "valtio";
@@ -28,7 +29,7 @@ export default function Customize() {
             {...slideAnimation("left")}
           >
             <div className="flex items-center min-h-screen">
-              <div className="editortabs-container tabs">
+              <div className="">
                 {EditorTabs.map((tab) => (
                   <Tab key={tab.name} tab={tab} handleClick={() => {}} />
                 ))}
@@ -49,7 +50,7 @@ export default function Customize() {
 
           <motion.div
             {...slideAnimation("down")}
-            className="filtertabs-container"
+            className="flex items-center justify-center text-center gap-5"
           >
             {FilterTabs.map((tab) => (
               <Tab
